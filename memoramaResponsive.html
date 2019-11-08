@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ea5111d21c.js" crossorigin="anonymous"></script>
+
+</head>
+
+<style>
+    .img-thumbnail {
+        max-width: 75%;
+    }
+
+    .scene {
+        height: 20vh;
+        width: 11vw;
+        border: 1px solid #CCC;
+        perspective: 600px;
+        margin-bottom: .3vw;
+    }
+
+    .card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        transform-origin: center right;
+        transition: transform 1s;
+    }
+
+    .card.is-flipped {
+        transform: translateX(-100%) rotateY(-180deg);
+    }
+
+    .card__face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        backface-visibility: hidden;
+    }
+
+    .card__face--front {
+        background: red;
+    }
+
+    .card__face--back {
+        background: blue;
+        transform: rotateY(180deg);
+    }
+
+    .img-inside {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body style="background-image: url('images/background1.png');">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 mt-2" style="text-align: center;">
+                <h3 style="color:black">Memory Game</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-5 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="scene scene--card">
+                                <div class="card">
+                                    <div class="card__face card__face--front"><img src="images/behind.png"
+                                            class="img-inside img-front" alt=""></div>
+                                    <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="scene scene--card">
+                                <div class="card">
+                                    <div class="card__face card__face--front"><img src="images/behind.png"
+                                            class="img-inside img-front" alt=""></div>
+                                    <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <div class="scene scene--card">
+                                <div class="card">
+                                    <div class="card__face card__face--front"><img src="images/behind.png"
+                                            class="img-inside img-front" alt=""></div>
+                                    <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="scene scene--card">
+                                <div class="card">
+                                    <div class="card__face card__face--front"><img src="images/behind.png"
+                                            class="img-inside img-front" alt=""></div>
+                                    <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="scene scene--card">
+                                <div class="card">
+                                    <div class="card__face card__face--front"><img src="images/behind.png"
+                                            class="img-inside img-front" alt=""></div>
+                                    <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="scene scene--card">
+                                    <div class="card">
+                                        <div class="card__face card__face--front"><img src="images/behind.png"
+                                                class="img-inside img-front" alt=""></div>
+                                        <div class="card__face card__face--back"><img class="img-inside img-behind" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            
+    </div>
+    <div class="modal fade" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Score</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modalBodyResult" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="window.location.href='index.html'" class="btn btn-primary">End</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        Array.prototype.removeItem = function (a) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == a) {
+                    for (var i2 = i; i2 < this.length - 1; i2++) {
+                        this[i2] = this[i2 + 1];
+                    }
+                    this.length = this.length - 1;
+                    return;
+                }
+            }
+        };
+
+        $(".img-front").each(function (index) {
+            $(this).attr("src", "images/behind.png");
+        });
+
+        var cards = [];
+        var cardsJustNumbers = [];
+        function random() {
+            for (var i = 0; i < 10; i++) {
+                var numberRandom = getRandomInt(1, 53);
+                if (cards.includes(numberRandom)) {
+                    while (cards.includes(numberRandom)) {
+                        var numberRandom = getRandomInt(1, 53);
+                    }
+                    cards[i] = numberRandom;
+                } else {
+                    cards[i] = numberRandom;
+                }
+            }
+            cardsJustNumbers = cards;
+            var cardsb = [];
+            var cardsa = [];
+            for (var i = 0; i < 10; i++) {
+                if(cards[i] >= 1 && cards[i] <= 9){
+                    cardsa[i] = "0" + cards[i] + "a";
+                }else{
+                    cardsa[i] = cards[i] + "a";
+                }
+            }
+            for (var i = 0; i < 10; i++) {
+                if(cards[i] >= 1 && cards[i] <= 9){
+                    cardsb[i] = "0" + cards[i] + "b";
+                }else{
+                    cardsb[i] = cards[i] + "b";
+                }
+            }
+            cards = cardsa.concat(cardsb);
+            cards = shuffle(cards);
+        }
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // Mientras queden elementos a mezclar...
+            while (0 !== currentIndex) {
+
+                // Seleccionar un elemento sin mezclar...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // E intercambiarlo con el elemento actual
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+        random();
+        $(".img-behind").each(function (index) {
+            $(this).attr("src", "images/" + cards[index] + ".png");
+        });
+
+        var cardsCorrect = [];
+        var firstOpenCard = null;
+        var firstCard = null;
+        var contadorIntentos = 0;
+
+        var myFunc = function (event) {
+            event.stopPropagation();
+
+        }
+
+
+        $('.card').click(function () {
+            var actual = $(this);
+            $(this).toggleClass('is-flipped');
+            if (firstOpenCard == null) {
+                firstOpenCard = $(this).children().children().eq(1).attr("src").substring(7, 9);
+                firstCard = $(this);
+            } else {
+                $(".card").css("pointer-events", "none");
+                if (firstOpenCard == $(this).children().children().eq(1).attr("src").substring(7, 9)) {
+                    firstCard.css("pointer-events", "none");
+                    $(this).children().children().eq(1).css("pointer-events", "none");
+
+                    cardsJustNumbers.removeItem(firstOpenCard)
+                    firstOpenCard = null;
+                    $(".card").css("pointer-events", "auto");
+                    contadorIntentos++;
+                    //SE TOMA POR BUENAS LAS 2 CARTAS
+                } else {
+                    firstOpenCard = null;
+                    contadorIntentos++;
+                    setTimeout(function () {
+                        firstCard.toggleClass('is-flipped');
+                        actual.toggleClass('is-flipped');
+                        $(".card").css("pointer-events", "auto");
+                    }, 1300);
+                    //CERRAMOS LAS CARTAS
+                }
+            }
+            if (cardsJustNumbers.length == 0) {
+                $('#modalResult').modal('show');
+                promedio = contadorIntentos / 10;
+                if (promedio <= 2) {
+                    // 5 estrella
+                    $('#modalBodyResult').empty();
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<p style="margin-top: 15px;margin-left: 10px;">¡Obtuviste 5 de 5 estrellas!</p>')
+                }
+                if (promedio > 2 && promedio <= 3) {
+                    // 4 estrellas
+                    $('#modalBodyResult').empty();
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<p style="margin-top: 15px;margin-left: 10px;">¡Obtuviste 4 de 5 estrellas!</p>')
+                }
+                if (promedio > 3 && promedio <= 4) {
+                    // 3 estrellas
+                    $('#modalBodyResult').empty();
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<p style="margin-top: 15px;margin-left: 10px;">¡Obtuviste 3 de 5 estrellas!</p>')
+                }
+                if (promedio > 4 && promedio <= 5) {
+                    // 2 estrellas
+                    $('#modalBodyResult').empty();
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<p style="margin-top: 15px;margin-left: 10px;">¡Obtuviste 2 de 5 estrellas!</p>')
+                }
+                if (promedio > 5) {
+                    // 1 estrella
+                    $('#modalBodyResult').empty();
+                    $('#modalBodyResult').append('<i class="fas fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<i class="far fa-star" style="color: yellow; font-size: 50px;"></i>')
+                    $('#modalBodyResult').append('<p style="margin-top: 15px;margin-left: 10px;">¡Obtuviste 1 de 5 estrellas!</p>')
+                }
+            }
+        })
+        
+    })
+</script>
+
+</html>
